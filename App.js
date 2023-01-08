@@ -8,7 +8,7 @@ function App() {
     <>
       <h1
         onClick={() => {
-          //setTotal(total++) -> total ++ 相當於total+=1
+          //setTotal(total++) -> 不可使用total ++，因相當於total+=1
           setTotal(total + 1);
         }}
       >
