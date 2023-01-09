@@ -1,7 +1,10 @@
 import { useState } from 'react';
 
 function Counter() {
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(0);  //只有setTotal才可更動狀態
+
+  // const[username, setUsername] = useState('');      唯一能夠更動username -> 狀態改變-> setUsername
+  // const[password, setPassword] = useState('');      唯一能夠更動密碼-> 狀態改變-> setPassword
   return (
     <>
     <h1
