@@ -1,4 +1,7 @@
-import { data } from './data/student';
+//import { data } from './data/students'
+// 導入一般的js資料格式使用
+// 導入json檔案(應為文字檔)時，會自動轉為js的資料格式
+import data from './data/students.json'
 
 function Student() {
   return (
