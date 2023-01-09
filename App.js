@@ -1,13 +1,10 @@
-// import Counter from './0109/1-counter/counter';
-// import JSXValue2 from './0109/3.jsx/JSXValue2';
-// import Student from './0109/4.map/Student';
-// import Student from './0109/4-2.map/Student';
-import Counter from './0109/6.jsx-inline-if/counter';
+// import Counter from './0109/7.state/counter';
+import Login from './0109/8.state- 異步範例/login';
 
 function App() {
   return (
     <>
-      <Counter/>
+      <Login />
     </>
   );
 }
