@@ -1,10 +1,10 @@
 // import Counter from './0109/1-counter/counter';
-import JSXValue from './0109/2.jsx/JSXValue';
+import JSXValue2 from './0109/3.jsx/JSXValue2';
 
 function App() {
   return (
     <>
-      <JSXValue />
+      <JSXValue2 />
     </>
   );
 }
