@@ -14,7 +14,8 @@ function Counter() {
     >
       {total}
     </h1>
-      {/* {前面的條件運算要轉為boolean，不要使用falsy 或 truthy判斷} */}
+      {/* {前面的條件運算要轉為boolean，不要使用falsy 或 truthy判斷}  ;
+      只用falsy或truthy判斷，會呈現多餘的數字 0*/}
       {!!total && <p>目前total={total}</p>}
       {total >0 && <p>目前total={total}</p>}
       {total !== 0 && <p>目前total={total}</p>}
