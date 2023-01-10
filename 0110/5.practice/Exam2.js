@@ -207,7 +207,40 @@ function Exam2() {
         在id為2後面插入id為5與文字為bbb的物件
       </button>
       <br />
-      <button onClick={() => {}}>取代id為3的文字為cccc</button>
+      <button
+        onClick={() => {
+          // 1. 從目前的狀態拷貝(->深拷貝/完全拷貝!!)出一個新的變數值(陣列/物件)
+
+          //可以拷貝多一層 陣列中物件的語法
+          // const newData = data.map((v, i) => {
+          //把每個物件值展開->做淺拷貝
+          //   return { ...v };
+          // });
+          // 2. 在新的變數值(陣列/物件)上作處理
+          // const index = newData.findIndex((v, i) => {
+          //   return v.id === 3;
+          // });
+          // console.log(index);
+          // if (index !== -1) {
+          //   newData[index].text = 'ccc';
+          // }
+          // 3. 設定回原本的狀態中
+          //   setData(newData);
+          // }
+
+          //以下相當於上面的程式結果
+          const newData = data.map((v, i) => {
+            // 物件合併屬性值
+            if (v.id === 3) return { ...v, text: 'cccc' };
+
+            return { ...v };
+          });
+
+          setData(newData);
+        }}
+      >
+        9.取代id為3的文字為cccc
+      </button>
     </>
   );
 }
