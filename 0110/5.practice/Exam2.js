@@ -179,7 +179,33 @@ function Exam2() {
         刪除id為4的物件資料
       </button>
       <br />
-      <button onClick={() => {}}>在id為2後面插入id為5與文字為bbb的物件</button>
+      <button
+        onClick={() => {
+          //尋找id = 2的索引值為何
+
+          const index = data.findIndex((v, i) => {
+            return v.id === 2; //沒找到->回傳-1
+          });
+          console.log(index);
+          console.log(data.slice(0, index + 1), data.slice(index + 1));
+          //如果找到時 (下方也可寫成: if(index > -1))
+          if (index !== -1) {
+            //分割陣列為兩部分(slice)
+            //插入要加入的物件， 合併
+            const newObj = { id: 5, text: 'bbb' };
+
+            //1 . 2
+            const newData = [
+              ...data.slice(0, index + 1),
+              newObj,
+              ...data.slice(index + 1),
+            ];
+            setData(newData);
+          }
+        }}
+      >
+        在id為2後面插入id為5與文字為bbb的物件
+      </button>
       <br />
       <button onClick={() => {}}>取代id為3的文字為cccc</button>
     </>
