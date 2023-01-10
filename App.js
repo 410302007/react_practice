@@ -1,5 +1,4 @@
-// import Counter from './0109/7.state/counter';
-import Parent from './0110/2.props-1/Parent';
+import Parent from './0110/3.props-2/Parent';
 
 function App() {
   return (
