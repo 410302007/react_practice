@@ -1,9 +1,9 @@
-import Parent from './0110/3.props-2/Parent';
+import Menu from './0110/4.practice/Menu';
 
 function App() {
   return (
     <>
-      <Parent />
+      <Menu />
     </>
   );
 }
