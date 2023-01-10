@@ -94,19 +94,19 @@ function Exam2() {
       <br />
       <button
         onClick={() => {
-          const newObj = {
-            // id
-            // 1. 單人使用應用，可用時間日期微秒整數值，如`Number(new Date())`或`+new Date()`
-            // 2. 用uuid或nanoid函式庫(需另外安裝npm)
-            // 3. 使用資料庫的id產生機制
-            // 4. 其它(例如數字遞增…)，如下範例
-            id: Number(new Date()),
-            text: 'xxx',
-          };
+          // id
+          // 1. 單人使用應用，可用時間日期微秒整數值，如`Number(new Date())`或`+new Date()`
+          // 2. 用uuid或nanoid函式庫(需另外安裝npm)
+          // 3. 使用資料庫的id產生機制
+          // 4. 其它(例如數字遞增…)，如下範例
+
           // 1. 從目前的狀態拷貝(->深拷貝/完全拷貝!!)出一個新的變數值(陣列/物件)
           // 2. 在新的變數值(陣列/物件)上作處理
           // 3. 設定回原本的狀態中
-
+          const newObj = {
+            id: Number(new Date()),
+            text: 'xxx',
+          };
           //1 //2
           const newData = [newObj, ...data];
 
