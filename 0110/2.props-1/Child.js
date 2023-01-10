@@ -1,6 +1,6 @@
-function Child(props) {
-  //先解構
-  const { text, color, foo } = props;
+function Child({ text, color, foo }) {
+  //先解構再使用
+  // const { text, color, foo } = props;
   // 子女元件可透過props接收到由父母元件傳遞來的各種資料
   // console.log(props); //text: "Hello你好"
   return (
