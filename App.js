@@ -1,10 +1,10 @@
 // import Counter from './0109/7.state/counter';
-import Login from './0109/8.state- 異步範例/login';
+import Counter from './0110/1.state/counter2';
 
 function App() {
   return (
     <>
-      <Login />
+      <Counter />
     </>
   );
 }
