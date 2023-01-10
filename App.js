@@ -1,9 +1,9 @@
-import Menu from './0110/4.practice/Menu';
+import Exam2 from './0110/5.practice/Exam2';
 
 function App() {
   return (
     <>
-      <Menu />
+      <Exam2 />
     </>
   );
 }
