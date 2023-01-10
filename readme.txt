@@ -18,3 +18,9 @@ JSX語法:
 setState -> 1.唯⼀能更動 State(狀態) 的⽅法
             2. 更動網⾴上的UI -> State(狀態) 需要被改變 -> 要呼叫 setState ⽅法
             3.ex: <h1 onClick={() => setState(total +1)}>{total}></h1>
+
+
+----------------------
+props:
+  1.只有Parent 可以傳送資料給Child (單向資料流)
+  2.子女元件可透過props接收到由父母元件傳遞來的各種資料

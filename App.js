@@ -1,10 +1,10 @@
 // import Counter from './0109/7.state/counter';
-import Counter from './0110/1.state/counter2';
+import Parent from './0110/2.props-1/Parent';
 
 function App() {
   return (
     <>
-      <Counter />
+      <Parent />
     </>
   );
 }
