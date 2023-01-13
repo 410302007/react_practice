@@ -1,9 +1,9 @@
-import HTML5Form from './0113/1.form/1.6-checkbox-group/HTML5Form';
+import Exchange from './0113/2.money/Exchange';
 
 function App() {
   return (
     <>
-      <HTML5Form />
+      <Exchange />
     </>
   );
 }
