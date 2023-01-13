@@ -1,9 +1,9 @@
-import Exchange from './0113/2.money/Exchange';
+import BMI from './0113/3.BMI/BMI';
 
 function App() {
   return (
     <>
-      <Exchange />
+      <BMI />
     </>
   );
 }
