@@ -1,9 +1,9 @@
-import BMI from './0113/3.BMI/BMI';
+import BirthForm from './0113/4.birthday/BirthForm';
 
 function App() {
   return (
     <>
-      <BMI />
+      <BirthForm />
     </>
   );
 }
