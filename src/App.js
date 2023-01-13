@@ -1,4 +1,4 @@
-import HTML5Form from './0113/1.form/1.7/HTML5Form';
+import HTML5Form from './0113/1.form/1.6-checkbox-group/HTML5Form';
 
 function App() {
   return (
