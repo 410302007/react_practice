@@ -27,19 +27,46 @@ function HTML5ValidForm() {
     setUser({ ...user, [e.target.name]: e.target.value }); //ex: email:e.target.value...
   };
 
+  const handleSubmit = (e) => {
+    //第一航要阻擋預設的form送出行為
+    e.preventDefault();
+
+    //獲得目前的表單輸入值
+    //1.從state獲得
+    console.log(user);
+    //2. 用FormData API獲得
+    const formData = new FormData(e.target);
+    console.log(formData.get('fullname'), formData.get('email'));
+
+    //做 額外/客製的檢查工作
+
+    //做 資料整理/整合工作
+
+    //做 送至伺服器(fetch, ajax...) ->submit
+  };
+  //表單有發生驗證錯誤時，會觸發事件
+  const handelInvalid = (e) => {
+    console.log('檢查有錯誤了');
+  };
+
   return (
     <>
       <h1>HTML5表單</h1>
       {/* 要在form表單標記中才能使用HTML5表單驗證 */}
-      <form>
+      {/* onSubmit 是表單完全合法(通過驗證)後才會觸發 */}
+      {/* onInvalid 是表單有發生驗證錯誤時，會觸發事件 */}
+      <form onSubmit={handleSubmit} onInvalid={handelInvalid}>
         <div>
           <label>姓名:</label>
+          {/*  
+              加入required(必填)屬性，能使用的屬性如下參考:
+              https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation 
+          */}
           <input
             type="text"
             name="fullname"
             value={user.fullname}
             onChange={handleFieldChange}
-            //加入必填屬性
             required
           />
         </div>
@@ -98,6 +125,37 @@ function HTML5ValidForm() {
         </div>
         {/* 在form標記中加入button，建議寫上type，因為沒加註type相當於submit */}
         <button type="submit">提交</button>
+        <hr />
+        <button
+          type="button"
+          onClick={() => {
+            setUser({
+              fullname: '王美美',
+              email: 'asd@gmail.com',
+              username: 'asd',
+              password1: '123456',
+              password2: '123456',
+              showPassword: false,
+            });
+          }}
+        >
+          填入正確範例資料
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setUser({
+              fullname: '王美美',
+              email: 'asd',
+              username: '小美',
+              password1: '135790',
+              password2: '135790',
+              showPassword: false,
+            });
+          }}
+        >
+          填入錯誤範例資料
+        </button>
       </form>
     </>
   );
