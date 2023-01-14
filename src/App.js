@@ -1,9 +1,9 @@
-import MultipleInput from './0114/2.form-valid/MultipleInput';
+import HTML5ValidForm from './0114/2.form-valid/HTML5ValidForm';
 
 function App() {
   return (
     <>
-      <MultipleInput />
+      <HTML5ValidForm />
     </>
   );
 }
