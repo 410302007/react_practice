@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './HTML5ValidForm.css';
 
 function HTML5ValidForm() {
   //1. 保持state在應用程式執行過程中，資料類型一致
@@ -12,6 +13,16 @@ function HTML5ValidForm() {
     password2: '',
     showPassword: false,
   });
+
+  //用於記錄錯誤訊息之用
+  const [fieldErrors, setFieldErrors] = useState({
+    fullname: '',
+    email: '',
+    username: '',
+    password1: '',
+    password2: '',
+  });
+
   //處理每個欄位的變動
   const handleFieldChange = (e) => {
     //可利用下面三哦觸發事件的東西來做進一步處理
@@ -46,7 +57,14 @@ function HTML5ValidForm() {
   };
   //表單有發生驗證錯誤時，會觸發事件
   const handelInvalid = (e) => {
-    console.log('檢查有錯誤了');
+    e.preventDefault();
+    // console.log('檢查有錯誤:', e.target.name, e.target.validationMessage);
+
+    //紀錄錯誤訊息
+    setFieldErrors({
+      ...fieldErrors,
+      [e.target.name]: e.target.validationMessage,
+    });
   };
 
   return (
@@ -59,7 +77,7 @@ function HTML5ValidForm() {
         <div>
           <label>姓名:</label>
           {/*  
-              加入required(必填)屬性，能使用的屬性如下參考:
+              加入required(必填)屬性，能使用的屬性參考以下網址:
               https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation 
           */}
           <input
@@ -69,6 +87,7 @@ function HTML5ValidForm() {
             onChange={handleFieldChange}
             required
           />
+          <span className="error">{fieldErrors.name}</span>
         </div>
         <br />
         <div>
@@ -80,6 +99,7 @@ function HTML5ValidForm() {
             onChange={handleFieldChange}
             required
           />
+          <span className="error">{fieldErrors.email}</span>
           <button type="button">檢查此信箱是否已註冊過</button>
         </div>
         <br />
@@ -92,6 +112,7 @@ function HTML5ValidForm() {
             onChange={handleFieldChange}
             required
           />
+          <span className="error">{fieldErrors.fullname}</span>
         </div>
         <div>
           <label>密碼:</label>
@@ -105,6 +126,7 @@ function HTML5ValidForm() {
             minLength={6} //最少輸入6字元
             maxLength={10} //最多輸入10字元
           />
+          <span className="error">{fieldErrors.password1}</span>
         </div>
         <div>
           <label>確認密碼:</label>
@@ -114,6 +136,7 @@ function HTML5ValidForm() {
             value={user.password2}
             onChange={handleFieldChange}
           />
+          <span className="error">{fieldErrors.password2}</span>
           <br />
           <input
             type="checkbox"
