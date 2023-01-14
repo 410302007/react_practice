@@ -1,9 +1,11 @@
-import BirthForm from './0113/4.birthday/BirthForm';
+import IdForm from './0114/IdForm';
+import RefsForm from './0114/RefsForm';
 
 function App() {
   return (
     <>
-      <BirthForm />
+      <IdForm />
+      <RefsForm />
     </>
   );
 }
