@@ -67,13 +67,26 @@ function HTML5ValidForm() {
     });
   };
 
+  // 當使用者回頭修正表單中任一欄位時，先清除此欄位的錯誤訊息
+  const handleFormChange = (e) => {
+    // 記錄錯誤訊息
+    setFieldErrors({
+      ...fieldErrors,
+      [e.target.name]: '',
+    });
+  };
+
   return (
     <>
       <h1>HTML5表單</h1>
       {/* 要在form表單標記中才能使用HTML5表單驗證 */}
       {/* onSubmit 是表單完全合法(通過驗證)後才會觸發 */}
       {/* onInvalid 是表單有發生驗證錯誤時，會觸發事件 */}
-      <form onSubmit={handleSubmit} onInvalid={handelInvalid}>
+      <form
+        onSubmit={handleSubmit}
+        onInvalid={handelInvalid}
+        onChange={handleFormChange}
+      >
         <div>
           <label>姓名:</label>
           {/*  
