@@ -11,30 +11,68 @@ function MultipleInput() {
     password1: '',
     password2: '',
   });
+  //處理每個欄位的變動
+  const handleFieldChange = (e) => {
+    //可利用下面三哦觸發事件的東西來做進一步處理
+    // console.log(e.target.type, e.target.name, e.target.value);
+
+    //以下要依照通用的三步驟原則來更新狀態
+    //1 & 2 (先拷貝原本狀態)
+    //ES6中新語法: computed property name(計算得來的屬性名稱)
+    const newUser = { ...user, [e.target.name]: e.target.value }; //ex: email:e.target.value...
+    //3
+    setUser(newUser);
+  };
+
   return (
     <>
       <h1>多個表單輸入共用處理函式</h1>
       <div>
         <label>姓名:</label>
-        <input type="text" name="fullname" />
+        <input
+          type="text"
+          name="fullname"
+          value={user.fullname}
+          onChange={handleFieldChange}
+        />
       </div>
       <br />
       <div>
         <label>信箱:</label>
-        <input type="email" name="email" />
+        <input
+          type="email"
+          name="email"
+          value={user.email}
+          onChange={handleFieldChange}
+        />
       </div>
       <br />
       <div>
         <label>帳號:</label>
-        <input type="text" name="username" />
+        <input
+          type="text"
+          name="username"
+          value={user.username}
+          onChange={handleFieldChange}
+        />
       </div>
       <div>
         <label>密碼:</label>
-        <input type="password" name="password1" />
+        <input
+          type="password"
+          name="password1"
+          value={user.password1}
+          onChange={handleFieldChange}
+        />
       </div>
       <div>
         <label>確認密碼:</label>
-        <input type="password" name="password2" />
+        <input
+          type="password"
+          name="password2"
+          value={user.password2}
+          onChange={handleFieldChange}
+        />
       </div>
     </>
   );
