@@ -9,9 +9,10 @@ function HTML5ValidForm() {
     fullname: '',
     email: '',
     username: '',
-    password1: '',
+    password: '',
+    showPassword: false, //用於切換密碼欄位類型使用
     password2: '',
-    showPassword: false,
+    showPassword2: false, //用於切換密碼欄位類型使用
   });
 
   //用於記錄錯誤訊息之用
@@ -19,7 +20,7 @@ function HTML5ValidForm() {
     fullname: '',
     email: '',
     username: '',
-    password1: '',
+    password: '',
     password2: '',
   });
 
@@ -31,6 +32,11 @@ function HTML5ValidForm() {
     //只針對checkbox(showPassword)使用
     if (e.target.name === 'showPassword') {
       setUser({ ...user, showPassword: e.target.checked });
+      return; //!!注意: 這裡跳出函式執行 (沒有跳出，會繼續執行)
+    }
+    //只針對checkbox(showPassword)使用
+    if (e.target.name === 'showPassword2') {
+      setUser({ ...user, showPassword2: e.target.checked });
       return; //!!注意: 這裡跳出函式執行 (沒有跳出，會繼續執行)
     }
 
@@ -50,6 +56,13 @@ function HTML5ValidForm() {
     console.log(formData.get('fullname'), formData.get('email'));
 
     //做 額外/客製的檢查工作
+    if (user.password !== user.password2) {
+      setFieldErrors({
+        ...fieldErrors,
+        password: '密碼與確認密碼欄位值不相同',
+        password2: '密碼與確認密碼欄位值不相同',
+      });
+    }
 
     //做 資料整理/整合工作
 
@@ -100,7 +113,7 @@ function HTML5ValidForm() {
             onChange={handleFieldChange}
             required
           />
-          <span className="error">{fieldErrors.name}</span>
+          <span className="error">{fieldErrors.fullname}</span>
         </div>
         <br />
         <div>
@@ -125,36 +138,47 @@ function HTML5ValidForm() {
             onChange={handleFieldChange}
             required
           />
-          <span className="error">{fieldErrors.fullname}</span>
+          <span className="error">{fieldErrors.username}</span>
         </div>
         <div>
           <label>密碼:</label>
           <input
             // 用showPassword的布林值來切換文字輸入框類型
             type={user.showPassword ? 'text' : 'password'}
-            name="password1"
-            value={user.password1}
+            name="password"
+            value={user.password}
             onChange={handleFieldChange}
             required
             minLength={6} //最少輸入6字元
             maxLength={10} //最多輸入10字元
           />
-          <span className="error">{fieldErrors.password1}</span>
-        </div>
-        <div>
-          <label>確認密碼:</label>
-          <input
-            type={user.showPassword ? 'text' : 'password'}
-            name="password2"
-            value={user.password2}
-            onChange={handleFieldChange}
-          />
-          <span className="error">{fieldErrors.password2}</span>
+          <span className="error">{fieldErrors.password}</span>
           <br />
           <input
             type="checkbox"
             name="showPassword"
             checked={user.showPassword}
+            onChange={handleFieldChange}
+          />
+          顯示輸入的密碼
+        </div>
+        <div>
+          <label>確認密碼:</label>
+          <input
+            type={user.showPassword2 ? 'text' : 'password'}
+            name="password2"
+            value={user.password2}
+            onChange={handleFieldChange}
+            required
+            minLength={6}
+            maxLength={10}
+          />
+          <span className="error">{fieldErrors.password2}</span>
+          <br />
+          <input
+            type="checkbox"
+            name="showPassword2"
+            checked={user.showPassword2}
             onChange={handleFieldChange}
           />
           顯示輸入的密碼
@@ -169,9 +193,10 @@ function HTML5ValidForm() {
               fullname: '王美美',
               email: 'asd@gmail.com',
               username: 'asd',
-              password1: '123456',
+              password: '123456',
               password2: '123456',
-              showPassword: false,
+              showPassword: true,
+              showPassword2: true,
             });
           }}
         >
@@ -181,12 +206,13 @@ function HTML5ValidForm() {
           type="button"
           onClick={() => {
             setUser({
-              fullname: '王美美',
+              fullname: 'aaaaa',
               email: 'asd',
               username: '小美',
-              password1: '135790',
-              password2: '135790',
-              showPassword: false,
+              password: '179055',
+              password2: '179056',
+              showPassword: true,
+              showPassword2: true,
             });
           }}
         >
