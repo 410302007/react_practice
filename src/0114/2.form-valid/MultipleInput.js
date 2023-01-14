@@ -10,11 +10,18 @@ function MultipleInput() {
     username: '',
     password1: '',
     password2: '',
+    showPassword: false,
   });
   //處理每個欄位的變動
   const handleFieldChange = (e) => {
     //可利用下面三哦觸發事件的東西來做進一步處理
-    // console.log(e.target.type, e.target.name, e.target.value);
+    console.log(e.target.type, e.target.name, e.target.value);
+
+    //只針對checkbox(showPassword)使用
+    if (e.target.name === 'showPassword') {
+      setUser({ ...user, showPassword: e.target.checked });
+      return; //跳出函式執行 (沒有跳出，會繼續執行)
+    }
 
     //以下要依照通用的三步驟原則來更新狀態
     //1 & 2 (先拷貝原本狀態)
@@ -59,7 +66,7 @@ function MultipleInput() {
       <div>
         <label>密碼:</label>
         <input
-          type="password"
+          type={user.showPassword ? 'text' : 'password'}
           name="password1"
           value={user.password1}
           onChange={handleFieldChange}
@@ -68,11 +75,19 @@ function MultipleInput() {
       <div>
         <label>確認密碼:</label>
         <input
-          type="password"
+          type={user.showPassword ? 'text' : 'password'}
           name="password2"
           value={user.password2}
           onChange={handleFieldChange}
         />
+        <br />
+        <input
+          type="checkbox"
+          name="showPassword"
+          checked={user.showPassword}
+          onChange={handleFieldChange}
+        />
+        顯示輸入的密碼
       </div>
     </>
   );
