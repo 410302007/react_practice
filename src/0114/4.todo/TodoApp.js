@@ -28,6 +28,16 @@ function TodoApp() {
     // 3. 設定回原本的狀態中
     //1 //2 //3
     setTodos([newTodo, ...todos]);
+
+    // 最短一行寫法
+    // setTodos([
+    //   {
+    //     id: Number(new Date()),
+    //     text: text,
+    //     completed: false, //預設為未完成
+    //   },
+    //   ...todos,
+    // ])
   };
 
   //傳入id, 然後做completed屬性的boolean值
@@ -36,10 +46,11 @@ function TodoApp() {
     const newTodos = todos.map((v) => {
       return { ...v };
     });
-
+    // 用尋找對應索引值的寫法
     const index = todos.findIndex((v, i) => {
       return v.id === id;
     });
+
     if (index !== -1) {
       // 2. 在新的變數值(陣列/物件)上作處理
       newTodos[index].completed = !newTodos[index].completed;
@@ -47,7 +58,7 @@ function TodoApp() {
       // 3. 設定回原本的狀態中
       setTodos(newTodos);
     }
-    // 下面是同樣的結果的寫法
+    // 用map中判斷的語法，與上面同樣結果的寫法
     // const newTodos = todos.map((v2, i2) => {
     //   if (id === v2.id)
     //     return { ...v2, completed: !v2.completed }
@@ -55,6 +66,13 @@ function TodoApp() {
     //     return { ...v2 }
     // })
     // setTodos(newTodos)
+
+    // // 最短一行寫法
+    // setTodos(
+    //   todos.map((v, i) =>
+    //     id === v.id ? { ...v, completed: !v.completed } : { ...v }
+    //   )
+    // )
   };
   // 傳入id，刪除此項目
   const deleteTodo = (id) => {
@@ -65,6 +83,8 @@ function TodoApp() {
 
     //3
     setTodos(newTodos);
+    // 最短一行寫法
+    //setTodos(todos.filter((v, i) => v.id !== id))
   };
 
   return (
