@@ -1,11 +1,9 @@
-import IdForm from './0114/IdForm';
-import RefsForm from './0114/RefsForm';
+import MultipleInput from './0114/2.form-valid/MultipleInput';
 
 function App() {
   return (
     <>
-      <IdForm />
-      <RefsForm />
+      <MultipleInput />
     </>
   );
 }
