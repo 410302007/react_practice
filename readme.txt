@@ -37,7 +37,13 @@ props:
      ref 藉由 forwardRef 傳送  
   2.button type-> 預設為submit (送出)
   3.input type='file' 檔案(不可控) 
-
+  4.map()->  React必用
+    何時不要使用map():
+     (1)不使用回傳的新陣列
+     (2)或/且不需要回傳的新陣列
+  5. indexOf 與 findIndex的差別: 
+      indexOf() ->只能找到一般的值，陣列中第一個被找到之索引，若不存在於陣列中則回傳 -1。
+      findIndex(放函式) ->較為彈性，尋找陣列中符合的元素，如果沒有符合的對象，將返回 -1
 ----------------------
 truthy/ falsy :
  **falsy-> 強制轉型為boolean值，回傳false:
