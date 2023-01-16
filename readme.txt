@@ -44,6 +44,8 @@ props:
   5. indexOf 與 findIndex的差別: 
       indexOf() ->只能找到一般的值，陣列中第一個被找到之索引，若不存在於陣列中則回傳 -1。
       findIndex(放函式) ->較為彈性，尋找陣列中符合的元素，如果沒有符合的對象，將返回 -1
+  6. boolean / null / undefined -> render時不呈現
+  7. 若要使用邏輯與 && /邏輯或 || -> 要先將前面的元素變成Boolean值(加!! or 大於 / 小於 / 不等於 / 等於)
 ----------------------
 truthy/ falsy :
  **falsy-> 強制轉型為boolean值，回傳false:
