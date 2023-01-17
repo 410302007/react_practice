@@ -8,8 +8,8 @@ import './TodoApp.css';
 
 function TodoApp() {
   const [todos, setTodos] = useState([
-    { id: 1, text: '買iPhone', completed: false },
-    { id: 2, text: '寫作業', completed: true },
+    { id: 1, text: '買iPhone', completed: false, editing: true },
+    { id: 2, text: '寫作業', completed: true, editing: false },
   ]);
 
   //切換 過濾目前呈現項目用選項，只有以下三種情況
@@ -19,6 +19,7 @@ function TodoApp() {
   const filterOptionsChinese = ['所有', '進行中', '已完成']; //中文對照
 
   //過濾
+  //方法1. if else  方法2. switch
   const getFilterTodos = (todos) => {
     // if (filter === 'All') return todos;
 
