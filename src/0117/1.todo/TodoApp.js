@@ -14,6 +14,36 @@ function TodoApp() {
   //切換 過濾目前呈現項目用選項，只有以下三種情況
   //'All' | 'Active' | 'Completed'
   const [filter, setFilter] = useState('All');
+  const filterOptions = ['All', 'Active', 'Completed']; // 英文，用於狀態指定值用
+  const filterOptionsChinese = ['所有', '進行中', '已完成']; //中文對照
+
+  //過濾
+  const getFilterTodos = (todos) => {
+    // if (filter === 'All') return todos;
+
+    // if (filter === 'Active')
+    //   return todos.filter((v, i) => {
+    //     return v.completed === false;
+    //   });
+
+    // if (filter === 'Completed')
+    //   return todos.filter((v, i) => {
+    //     return v.completed === true;
+    //   });
+    switch (filter) {
+      case 'Active':
+        return todos.filter((v, i) => {
+          return !v.completed;
+        });
+      case 'Completed':
+        return todos.filter((v, i) => {
+          return v.completed;
+        });
+      case 'All':
+      default:
+        return todos;
+    }
+  };
 
   const addTodo = (text) => {
     // id的選擇
@@ -96,50 +126,31 @@ function TodoApp() {
     <>
       <h1>待辦事項</h1>
       {/* 利用屬性(props)傳入 */}
-      <AddForm
-        // inputText={inputText}
-        // setInputText={setInputText}
-        addTodo={addTodo}
-      />
+      <AddForm addTodo={addTodo} />
       <hr />
       <TodoList
-        todos={todos}
+        //呈現時要先經過過濾
+        todos={getFilterTodos(todos)}
         toggleCompleted={toggleCompleted}
         deleteTodo={deleteTodo}
       />
       <hr />
-      <button
-        className={
-          filter === 'All' ? 'filter-button-active' : 'filter-button-normal'
-        }
-        onClick={() => {
-          setFilter('All');
-        }}
-      >
-        所有(All)
-      </button>
-      <button
-        className={
-          filter === 'Active' ? 'filter-button-active' : 'filter-button-normal'
-        }
-        onClick={() => {
-          setFilter('Active');
-        }}
-      >
-        進行中(Active)
-      </button>
-      <button
-        className={
-          filter === 'Completed'
-            ? 'filter-button-active'
-            : 'filter-button-normal'
-        }
-        onClick={() => {
-          setFilter('Completed');
-        }}
-      >
-        已完成(Completed)
-      </button>
+      {filterOptions.map((v, i) => {
+        return (
+          <button
+            //只有在選項在應用程式執行中，完全不會有任何更動，才能使用索引值當key值
+            key={i}
+            className={
+              filter === v ? 'filter-button-active' : 'filter-button-normal'
+            }
+            onClick={() => {
+              setFilter(v);
+            }}
+          >
+            {filterOptionsChinese[i]}({v})
+          </button>
+        );
+      })}
     </>
   );
 }
