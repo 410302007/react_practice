@@ -38,6 +38,13 @@ function FC() {
     }
   }, [total]);
 
+  //模擬willUnmount
+  useEffect(() => {
+    return () => {
+      console.log('模擬willUnmount');
+    };
+  }, []);
+
   return (
     <>
       <h1>函式型元件</h1>
