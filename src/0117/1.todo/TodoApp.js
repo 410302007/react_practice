@@ -3,6 +3,7 @@ import AddForm from './components/AddForm';
 //導入資料夾`/TodoList`相當於 `/TodoList/index`
 //此作法僅是為了方便用資料夾檔案結構，來對應元件目前呈現在網頁的階層
 import TodoList from './components/TodoList';
+import FilterButtonGroup from './components/FilterButtonGroup';
 import './TodoApp.css';
 
 function TodoApp() {
@@ -135,22 +136,7 @@ function TodoApp() {
         deleteTodo={deleteTodo}
       />
       <hr />
-      {filterOptions.map((v, i) => {
-        return (
-          <button
-            //只有在選項在應用程式執行中，完全不會有任何更動，才能使用索引值當key值
-            key={i}
-            className={
-              filter === v ? 'filter-button-active' : 'filter-button-normal'
-            }
-            onClick={() => {
-              setFilter(v);
-            }}
-          >
-            {filterOptionsChinese[i]}({v})
-          </button>
-        );
-      })}
+      <FilterButtonGroup filter={filter} setFilter={setFilter} />
     </>
   );
 }
