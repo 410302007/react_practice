@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import AddForm from './components/AddForm';
+//導入資料夾`/TodoList`相當於 `/TodoList/index`
+//此作法僅是為了方便用資料夾檔案結構，來對應元件目前呈現在網頁的階層
 import TodoList from './components/TodoList';
 import './TodoApp.css';
 

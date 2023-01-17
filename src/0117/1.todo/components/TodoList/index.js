@@ -1,3 +1,4 @@
+// 在傳入參數時解構props
 import TodoItem from './TodoItem';
 function TodoList({ todos, toggleCompleted, deleteTodo }) {
   return (
@@ -5,6 +6,7 @@ function TodoList({ todos, toggleCompleted, deleteTodo }) {
       <ul>
         {/* 不可用索引值當key，索引值在執行過程中會因為新增、刪除而改變 */}
         {todos.map((todo, i) => {
+          // key值要加在map裡面回調函式中返回的元件最外層
           return (
             <TodoItem
               key={todo.id}
