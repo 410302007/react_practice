@@ -1,8 +1,19 @@
-import CC from './CC';
+import { useState } from 'react';
+// import CC from './CC';
+import FC from './FC';
 function Main() {
+  const [show, setShow] = useState(false);
   return (
     <>
-      <CC />
+      <button
+        onClick={() => {
+          setShow(!show);
+        }}
+      >
+        {show ? '移除' : '呈現'}
+      </button>
+      <hr />
+      {show && <FC />}
     </>
   );
 }
