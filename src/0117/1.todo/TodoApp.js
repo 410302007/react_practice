@@ -11,6 +11,10 @@ function TodoApp() {
     { id: 2, text: '寫作業', completed: true },
   ]);
 
+  //切換 過濾目前呈現項目用選項，只有以下三種情況
+  //'All' | 'Active' | 'Completed'
+  const [filter, setFilter] = useState('All');
+
   const addTodo = (text) => {
     // id的選擇
     // 1. 單人使用應用，可用時間日期毫秒整數值，如`Number(new Date())`或`+new Date()`
@@ -103,6 +107,39 @@ function TodoApp() {
         toggleCompleted={toggleCompleted}
         deleteTodo={deleteTodo}
       />
+      <hr />
+      <button
+        className={
+          filter === 'All' ? 'filter-button-active' : 'filter-button-normal'
+        }
+        onClick={() => {
+          setFilter('All');
+        }}
+      >
+        所有(All)
+      </button>
+      <button
+        className={
+          filter === 'Active' ? 'filter-button-active' : 'filter-button-normal'
+        }
+        onClick={() => {
+          setFilter('Active');
+        }}
+      >
+        進行中(Active)
+      </button>
+      <button
+        className={
+          filter === 'Completed'
+            ? 'filter-button-active'
+            : 'filter-button-normal'
+        }
+        onClick={() => {
+          setFilter('Completed');
+        }}
+      >
+        已完成(Completed)
+      </button>
     </>
   );
 }

@@ -7,3 +7,13 @@
   color: green;
   font-weight: bold;
 }
+.filter-button-normal{
+  background-color: palevioletred;
+  color: black;
+  border: 1px black solid;
+}
+.filter-button-active{
+  background-color: blueviolet;
+  color: azure;
+  border: 1px black solid;
+}
