@@ -78,31 +78,32 @@ function TodoApp() {
   };
 
   //傳入id, 然後做completed屬性的boolean值
+
   const toggleCompleted = (id) => {
-    // 1. 從目前的狀態拷貝(ps.深拷貝/完全拷貝)出一個新的變數值(陣列/物件)\
-    const newTodos = todos.map((v) => {
-      return { ...v };
-    });
-    // 用尋找對應索引值的寫法
-    const index = todos.findIndex((v, i) => {
-      return v.id === id;
-    });
-
-    if (index !== -1) {
-      // 2. 在新的變數值(陣列/物件)上作處理
-      newTodos[index].completed = !newTodos[index].completed;
-
-      // 3. 設定回原本的狀態中
-      setTodos(newTodos);
-    }
-    // 用map中判斷的語法，與上面同樣結果的寫法
-    // const newTodos = todos.map((v2, i2) => {
-    //   if (id === v2.id)
-    //     return { ...v2, completed: !v2.completed }
-    //   else
-    //     return { ...v2 }
+    // //1. 從目前的狀態拷貝(ps.深拷貝/完全拷貝)出一個新的變數值(陣列/物件)\
+    // const newTodos = todos.map((v) => {
+    //   return { ...v }
     // })
-    // setTodos(newTodos)
+
+    // // 用尋找對應索引值的寫法
+    // const index = todos.findIndex((v, i) => {
+    //   return v.id === id
+    // })
+
+    // if (index !== -1) {
+    //   // 2. 在新的變數值(陣列/物件)上作處理
+    //   newTodos[index].completed = !newTodos[index].completed
+
+    //   // 3. 設定回原本的狀態中
+    //   setTodos(newTodos)
+    // }
+
+    // 用map中判斷的語法，與上面同樣結果的寫法
+    const newTodos = todos.map((v2, i2) => {
+      if (id === v2.id) return { ...v2, completed: !v2.completed };
+      else return { ...v2 };
+    });
+    setTodos(newTodos);
 
     // // 最短一行寫法
     // setTodos(
@@ -111,6 +112,30 @@ function TodoApp() {
     //   )
     // )
   };
+
+  //傳入id ，然後將此項目的文字(text)屬性更改為傳入的文字
+  // 其它非此id的項目的editing屬性均要設定為false
+  const toggleEditing = (id) => {
+    const newTodos = todos.map((v, i) => {
+      //id一致的話，切換editing的布林值
+      if (id === v.id) return { ...v, editing: !v.editing };
+      // 其它非此id的項目的editing屬性均要設定為false
+      else return { ...v, editing: false };
+    });
+    setTodos(newTodos);
+  };
+
+  // 傳入id與text，然後將此項目的文字(text)屬性更改為傳入
+  const updateTodo = (id, text) => {
+    const newTodos = todos.map((v, i) => {
+      // id一致的話，文字更新為text+切換為原本未編輯的狀況(editing:false)
+      if (id === v.id) return { ...v, text: text, editing: false };
+      else return { ...v };
+    });
+
+    setTodos(newTodos);
+  };
+
   // 傳入id，刪除此項目
   const deleteTodo = (id) => {
     //1. 2
@@ -135,6 +160,8 @@ function TodoApp() {
         todos={getFilterTodos(todos)}
         toggleCompleted={toggleCompleted}
         deleteTodo={deleteTodo}
+        toggleEditing={toggleEditing}
+        updateTodo={updateTodo}
       />
       <hr />
       <FilterButtonGroup filter={filter} setFilter={setFilter} />

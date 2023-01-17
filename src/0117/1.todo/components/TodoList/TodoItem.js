@@ -1,6 +1,6 @@
-function TodoItem({ todo, toggleCompleted, deleteTodo }) {
+function TodoItem({ todo, toggleCompleted, deleteTodo, toggleEditing }) {
   //可以先解構todo物件，方便在下面使用todo.id , todo.text....
-  const { id, completed, text, editing } = todo;
+  const { id, completed, text } = todo;
   return (
     <>
       <li className={completed ? 'completed' : 'active'}>
@@ -11,9 +11,14 @@ function TodoItem({ todo, toggleCompleted, deleteTodo }) {
             toggleCompleted(id);
           }}
         />
-
         {text}
-        <button onClick={() => {}}>編輯</button>
+        <button
+          onClick={() => {
+            toggleEditing(id);
+          }}
+        >
+          編輯
+        </button>
         <button
           onClick={() => {
             deleteTodo(id);
