@@ -18,6 +18,7 @@ function EditForm({ text, updateTodo, id }) {
               updateTodo(id, inputText);
             }
           }}
+          // 自動focus到這個文字輸入框中
           autoFocus
         />
         {/* <button
