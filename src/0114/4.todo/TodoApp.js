@@ -10,6 +10,18 @@ function TodoApp() {
     { id: 2, text: '寫作業', completed: true },
   ]);
 
+  //reducer(純粹函式，不倚靠外部)
+  const addTodoPure = (state, text) => {
+    return [
+      {
+        id: Number(new Date()),
+        text: text,
+        completed: false, //預設為未完成
+      },
+      ...state,
+    ];
+  };
+
   const addTodo = (text) => {
     // id的選擇
     // 1. 單人使用應用，可用時間日期毫秒整數值，如`Number(new Date())`或`+new Date()`
