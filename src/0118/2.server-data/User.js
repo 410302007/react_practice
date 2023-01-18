@@ -12,13 +12,34 @@ function User() {
 
   //與伺服器相連獲得資料的函式
   const getUsers = async () => {
-    const response = await axios.get(
-      'https://my-json-server.typicode.com/eyesofkids/json-fake-data/users'
-    );
-    // console.log(response.data); -> 21位成員陣列
+    try {
+      const response = await axios.get(
+        'https://my-json-server.typicode.com/eyesofkids/json-fake-data/users'
+      );
+      console.log(response.data); //-> 21位成員陣列
 
-    //設定到state中
-    setUsers(response.data);
+      //設定到state中
+      //這裡要確保設定到state的資料類型是符合的
+      //例如此處的陣列(若為陣列格式，設定進state; 不是陣列格式，不要設定進去)
+      if (Array.isArray(response.data)) {
+        setUsers(response.data);
+      }
+
+      /* 單純用fetch api*/
+      /* ================================ */
+      // const response = await fetch('https://my-json-server.typicode.com/eyesofkids/json-fake-data/users')
+      //
+      // const data = await response.json()
+      //
+      // if (Array.isArray(response.data)) {
+      //   setUsers(data)
+      // }
+      //
+      /* ============================== */
+      /* 單純用fetch */
+    } catch (e) {
+      console.log(e);
+    }
   };
   //didMount (已與伺服器相連，顯示在網頁上)
   useEffect(() => {
