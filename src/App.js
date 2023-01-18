@@ -1,6 +1,7 @@
 // import Main from './0118/1.lifecycle/Main';
 // import ReactBS5 from './0118/4.react-bs/ReactBS5';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
 
 //引入頁面元件
 import Home from './pages/Home';
@@ -12,19 +13,18 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <BrowserRouter>
-      <h2>a連結</h2>
-      <a href="/">home</a> <a href="member">member</a>
-      <hr />
-      <h2>Link元件</h2>
-      <Link to="/">home</Link> <Link to="member">member</Link>
-      <hr />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="product" element={<Product />} />
-        <Route path="member" element={<Member />} />
-        {/*404找不到網頁用的頁面 */}
-        <Route path="*" element={<NotFound />} />
+        {/* MainLayout中有Header, Footer與Outlet等元件，整體排版用 */}
+        <Route path="/" element={<MainLayout />}>
+          {/* index代表此路由中的預設子頁 */}
+          <Route index element={<Home />} />
+          {/* 其它子頁面 */}
+          <Route path="about" element={<About />} />
+          <Route path="product" element={<Product />} />
+          <Route path="member" element={<Member />} />
+          {/* 404未找到的頁面路由，需放在最下方 */}
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
