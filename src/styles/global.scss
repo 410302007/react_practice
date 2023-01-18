@@ -1,4 +1,8 @@
 // 這裡導入所有要預設變數覆蓋
+$primary:rgb(183, 47, 20);
+$secondary:rgb(45, 64, 128);
+//改圓角定義
+$border-radius:0;
 
 // 導入bootstrap所有的樣式與預設變數
 @import '~bootstrap/scss/bootstrap';

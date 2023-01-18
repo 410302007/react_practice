@@ -1,10 +1,10 @@
 // import Main from './0118/1.lifecycle/Main';
-import User from './0118/2.server-data/User';
+import BS5 from './0118/3.BS5/BS5';
 
 function App() {
   return (
     <>
-      <User />
+      <BS5 />
     </>
   );
 }
