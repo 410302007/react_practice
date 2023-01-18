@@ -48,9 +48,26 @@ props:
   7. 若要使用邏輯與 && /邏輯或 || -> 要先將前面的元素變成Boolean值(加!! or 大於 / 小於 / 不等於 / 等於)
   8. !! state(狀態)的資料類型雖為物件，但在函式型元件可不用為物件(可為數字/字串/boolean值..)，但在類比型元件一定為物件!!
   9.props(屬性)的資料類型一定為物件
+  10. react的元件 為純函式
+  11. useEffect不可在return & if 呼叫
+  12. 只有
+      1.setState(自己狀態)改變  
+      2.從父母元件接收到新屬性時 
+      => 才會觸發更新階段(didUpdate)
+
+  13.
+  useEffect(相依性陣列): 
+  (1)相依性陣列中放入陣列或物件，只要有設定到state就一定會執行 
+  (2)使用object.is()比較
+
 ----------------------
 truthy/ falsy :
  **falsy-> 強制轉型為boolean值，回傳false:
            1.false  2.""  3. 0  4. -0  
            5.NaN  6.null  7.undefined
+----------------------
+useLayoutEffect:
+  1.執行時間點為: 在瀏覽器重繪(painting)前
+  2.較useEffect執行時間早
+  3.componentDidUpdate與useLayoutEffect執行時間點一致
 
