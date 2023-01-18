@@ -46,14 +46,21 @@ function User() {
   };
   //didMount (已與伺服器相連，顯示在網頁上)
   useEffect(() => {
+    //開啟載入動畫
+    setIsLoading(true);
+
     //向伺服器要求資料
     getUsers();
-
-    //設定兩秒後關閉載入指示動畫
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
   }, []);
+
+  useEffect(() => {
+    if (isLoading) {
+      //自動兩秒後關閉載入指示動畫
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+    }
+  }, [isLoading]);
 
   const loader = (
     <div className="d-flex justify-content-center">
