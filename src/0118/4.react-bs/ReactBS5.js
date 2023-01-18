@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
+// 部份導入方式
 import { Button, Modal } from 'react-bootstrap';
+
+// "新的"各單個元件的導入方式
+// import Modal from 'react-bootstrap/Modal'
+// import Button from 'react-bootstrap/Button'
 
 function ReactBS5() {
   const [show, setShow] = useState(false);
