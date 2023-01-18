@@ -13,8 +13,9 @@ function FC() {
   }, []);
   // ^^空陣列代表不與任何state或props相依賴，中間的程式碼只在元件初次render時執行一次，之後就不再執行
 
-  //模擬didUpdate
   //[]=> React.DepencyList (相依性陣列)
+  //模擬didMount + didUpdate
+  //第一次render也會執行
   useEffect(() => {
     console.log('模擬didMount+didUpdate', 'total=', total);
   }, [total]);
